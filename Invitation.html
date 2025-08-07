@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Message for Danielle</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .envelope {
+      width: 200px;
+      height: 120px;
+      background-color: #ffb6c1;
+      position: relative;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    .flap {
+      position: absolute;
+      top: -60px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 60px solid #ffb6c1;
+    }
+
+    .hearts {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: red;
+    }
+
+    .paper {
+      display: none;
+      background-color: #fffaf0;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .message-part {
+      display: none;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      white-space: pre-line;
+    }
+
+    .message-part.active {
+      display: block;
+    }
+
+    .next-btn, .submit-btn, .invitation button {
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 0.5rem;
+    }
+
+    .form-section {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .final-message {
+      display: none;
+      font-size: 1.3rem;
+      color: #ff6b6b;
+      margin-top: 2rem;
+    }
+
+    .question {
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .question label {
+      font-weight: bold;
+      color: #ff69b4;
+    }
+
+    .invitation {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    #response {
+      display: none;
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="envelope" onclick="openMessage()">
+    <div class="flap"></div>
+    <div class="hearts">💖💌💖</div>
+  </div>
+
+  <div class="paper" id="messageContainer">
+    <div id="messageParts">
+      <div class="message-part active">Hello Danielle, Ako nga pala si Antonio — ‘yung nagpayong sa’yo noong March 2, sa morning procession ng Fiestang Bayan sa Taguig.</div>
+      <div class="message-part">Baka hindi mo na maalala, pero noong araw na ‘yon, nag-iwan ka ng simpleng alaala na hanggang ngayon ay naaalala ko pa rin.</div>
+      <div class="message-part">Hindi ko rin alam kung bakit, pero mula noon, parang may kakaibang curiosity akong naramdaman tungkol sa’yo.</div>
+      <div class="message-part">Maaaring dahil sa simpleng ngiti mo, o sa paraan ng pagdadala mo ng sarili — basta may kung anong bagay sa ‘yo na naging dahilan para maisip kitang muli.</div>
+      <div class="message-part">Hindi tayo nagkausap nang matagal, at alam kong hindi mo rin ako kilala. Pero sa pagdaan ng mga buwan, kahit anong pilit kong ibaling ang atensyon ko sa iba… ikaw pa rin ang naaalala ko.</div>
+      <div class="message-part">Kaya kahit simpleng alaala lang ‘yon sa paningin ng iba, para sa’kin naging simula ng tanong — “Sino kaya siya?”, “Ano kayang mga bagay ang nagpapasaya sa kanya?”, at “Bakit kaya hanggang ngayon, hindi siya nawawala sa isip ko?”</div>
+      <div class="message-part">Sa totoo lang, ilang beses ko na ring sinubukang kalimutan ‘yung sandaling ‘yon. Pero sa tuwing naaalala ko ‘yung umagang ‘yon — ‘yung payong, ‘yung tahimik na eksena, at ikaw — parang may parte sa’kin na gustong bumalik, kahit para lang makilala ka nang totoo.</div>
+      <div class="message-part">Alam kong parang bigla ito, at baka nagulat ka rin na may ganitong mensahe. Pero gusto ko lang sanang iparating sa’yo na wala akong ibang intensyon kundi makilala ka, sa paraan na magaan, totoo, at may respeto.</div>
+      <div class="message-part">Walang pressure, walang expectation — kundi simpleng pagtangkang kilalanin ka, kung papayagan mo.</div>
+      <div class="message-part">Gumawa ako ng maliit na webpage — simple lang siya, pero mula sa puso. Doon ko inilagay ang ilang tanong na sana’y sagutin mo kung gugustuhin mo rin akong makilala kahit kaunti.</div>
+      <div class="message-part">Isang maliit na paraan lang ito para simulan ang usapan, at baka sakaling… masundan pa.</div>
+      <div class="message-part">Hindi ko alam kung anong magiging sagot mo, o kung may interes ka mang makilala ako. Pero gusto ko lang sanang malaman mo na nandito ako, handang makinig at magtanong, kung sakali mang may pagkakataon.</div>
+      <div class="message-part">Kung sakali mang hindi mo na ito pansinin,  hindi ko rin naman ito pipilitin. Pero kung sakali mang may parte sa’yo na naging curious din, sana’y magustuhan mo ang ginawa ko.</div>
+      <div class="message-part">Kung hindi mo man ito pansinin, maiintindihan ko. Pero kung sakali lang na may parte sa’yo na naging curious din, I hope you like this.</div>
+    </div>
+
+    <button class="next-btn" onclick="showNext()">Next ➡️</button>
+
+    <div class="invitation" id="invitation">
+      <h2>Do you want to know more about me?</h2>
+      <p>Because I’d love to know more about you.</p>
+      <button onclick="respondYes()">Yes 💕</button>
+      <button onclick="respondNo()">No 😢</button>
+    </div>
+
+    <div id="response"> </div>
+
+    <div class="form-section" id="formSection">
+      <h3>If you're open to it, I'd love to know...</h3>
+
+      <label for="date">📅 What date are you free?</label><br/>
+      <input type="date" id="date" /><br/>
+
+      <label for="location">📍 Where would you like to go?</label><br/>
+      <input type="text" id="location" placeholder="e.g. Café, Park, Movie..." /><br/>
+
+      <div class="question">
+        <label>🌟 What’s something that instantly makes you smile?</label><br/>
+        <textarea rows="2"></textarea>
+      </div>
+
+      <div class="question">
+        <label>🎶 What song best describes your vibe?</label><br/>
+        <textarea rows="2"></textarea>
+      </div>
+
+      <div class="question">
+        <label>📚 If you could spend a day doing anything, what would it be?</label><br/>
+        <textarea rows="2"></textarea>
+      </div>
+
+      <div class="question">
+        <label>💭 What’s one thing you’ve always wanted to try but haven’t yet?</label><br/>
+        <textarea rows="2"></textarea>
+      </div>
+
+      <button class="submit-btn" onclick="submitForm()">Submit</button>
+    </div>
+
+    <div class="final-message" id="finalMessage">Can’t wait to see you 💖</div>
+  </div>
+
+  <script>
+    function openMessage() {
+      document.querySelector('.envelope').style.display = 'none';
+      document.getElementById('messageContainer').style.display = 'block';
+    }
+
+    let currentPart = 0;
+    const parts = document.querySelectorAll('.message-part');
+    const nextBtn = document.querySelector('.next-btn');
+
+    function showNext() {
+      parts[currentPart].classList.remove('active');
+      currentPart++;
+      if (currentPart < parts.length) {
+        parts[currentPart].classList.add('active');
+      } else {
+        nextBtn.style.display = 'none';
+        document.getElementById('invitation').style.display = 'block';
+      }
+    }
+
+    function respondYes() {
+      document.getElementById('invitation').style.display = 'none';
+      document.getElementById('formSection').style.display = 'block';
+    }
+
+    function respondNo() {
+      document.getElementById('invitation').style.display = 'none';
+      const responseDiv = document.getElementById('response');
+      responseDiv.innerText = "I understand your decision. Thank you for still reading my message.";
+      responseDiv.style.display = 'block';
+    }
+
+    function submitForm() {
+      const date = document.getElementById('date').value;
+      const location = document.getElementById('location').value;
+
+      if (date && location) {
+        document.getElementById('finalMessage').style.display = 'block';
+        document.getElementById('formSection').style.display = 'none';
+      } else {
+        alert('Please fill in all fields before submitting.');
+      }
+    }
+  </script>
+</body>
+</html>
